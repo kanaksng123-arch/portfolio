@@ -1,0 +1,47 @@
+/* ═══════════════════════════════════════════════════
+   ANIMATIONS.CSS — Scroll reveals, keyframes
+════════════════════════════════════════════════════ */
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.65s var(--ease-out-expo),
+    transform 0.65s var(--ease-out-expo);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal[data-reveal-delay="100"]  { transition-delay: 0.10s; }
+.reveal[data-reveal-delay="150"]  { transition-delay: 0.15s; }
+.reveal[data-reveal-delay="200"]  { transition-delay: 0.20s; }
+.reveal[data-reveal-delay="250"]  { transition-delay: 0.25s; }
+.reveal[data-reveal-delay="300"]  { transition-delay: 0.30s; }
+.reveal[data-reveal-delay="350"]  { transition-delay: 0.35s; }
+.reveal[data-reveal-delay="400"]  { transition-delay: 0.40s; }
+
+/* ── KEYFRAMES ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
